@@ -1,9 +1,11 @@
 #!/bin/bash
 
+
 export GOPATH=$(shell pwd):$(shell pwd)/vendors
+
 OBJ = harbour
 
-default: $(OBJ)
+all: $(OBJ)
 
 $(OBJ):
 	cd src && go build -gcflags "-N -l" -o ../$@ .
@@ -16,4 +18,3 @@ dep:
 
 clean:
 	rm -fr $(OBJ)
-
