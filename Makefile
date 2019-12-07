@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-export GOPATH=$(shell pwd):$(shell pwd)/vendors/src
+export GOPATH=$(shell pwd):$(shell pwd)/vendors
 
 default: harbour
 
