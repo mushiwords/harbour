@@ -1,0 +1,15 @@
+{
+	"Service":{
+		"ListenPort": 8080
+	},
+	"Mylog":{
+		"LogLevel": "debug",
+        "InfoLogFile": "log/harbour-info.log",
+        "AccessLogFile": "log/harbour-access.log",
+        "LogMaxAge": 3600
+	},
+	"Redis": {
+    	"Addr": "127.1:16379",
+   		 "PassWord": "123456"
+  	}
+}
