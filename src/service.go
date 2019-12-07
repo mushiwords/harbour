@@ -13,6 +13,7 @@ import (
 	"net/http"
 	"strconv"
 	"time"
+	"common/git"
 )
 
 
@@ -70,6 +71,7 @@ func Start(cfg *config.Service) error {
 }
 
 func my_timer() {
+	git.GitClone("https://github.com/yycaptain/adapter-go.git")
 	ticker := time.NewTicker(time.Minute * 1) // 1分钟的ticker
 
 	for range ticker.C {
