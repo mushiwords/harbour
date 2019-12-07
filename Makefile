@@ -11,6 +11,7 @@ harbour:
 -include .deps
 
 dep:
+	echo -n "$(OBJ):" > .deps
 	find src -name '*.go' | awk '{print $$0 " \\"}' >> .deps
 
 clean:
