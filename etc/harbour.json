@@ -11,5 +11,9 @@
 	"Redis": {
     	"Addr": "127.1:16379",
    		 "PassWord": "123456"
+  	},
+  	"WebService":{
+  		"WorkRoot":"/home/captain/Data/html",
+  		"GitAddress":"https://github.com/yycaptain/website.git"
   	}
 }

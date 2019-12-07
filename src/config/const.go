@@ -39,11 +39,16 @@ type Redis struct {
 	PassWord string `json:"PassWord"`
 	Timeout  int    `json:"Timeout"`
 }
+type WebService struct {
+	WorkRoot string `json:"WorkRoot"`
+	GitAddress string `json:"GitAddress"`
+}
 
 type Config struct {
+	Service   *Service   `json:"Service"`
+	WebService   *WebService   `json:"WebService"`
 	MyDB      *MyDB      `json:"MyDB"`
 	MyLog     *MyLog     `json:"MyLog"`
-	Service   *Service   `json:"Service"`
 	OpenApi   *OpenApi   `json:"OpenApi"`
 	OSS       *OSS       `json:"OSS"`
 	Redis     *Redis     `json:"Redis"`
