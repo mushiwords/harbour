@@ -1,12 +1,8 @@
 package git  
   
 import (  
-    "os"  
-    "bufio"  
     "os/exec"  
     "fmt"  
-    "io"  
-    "sync"  
     "bytes"  
 )  
   
