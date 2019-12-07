@@ -1,11 +1,11 @@
 #!/bin/bash
 
-
 export GOPATH=$(shell pwd):$(shell pwd)/vendors
+OBJ = harbour
 
-default: harbour
+default: $(OBJ)
 
-harbour:
+$(OBJ):
 	cd src && go build -gcflags "-N -l" -o ../$@ .
 
 -include .deps
@@ -15,5 +15,5 @@ dep:
 	find src -name '*.go' | awk '{print $$0 " \\"}' >> .deps
 
 clean:
-	rm -fr harbour
+	rm -fr $(OBJ)
 
