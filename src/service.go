@@ -2,7 +2,7 @@
  * 业务模块
  **/
 
-package service
+package main
 
 import (
 	"errors"
