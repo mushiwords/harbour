@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 export GOPATH=$(shell pwd):$(shell pwd)/vendors
 
 OBJ = harbour
