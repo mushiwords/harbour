@@ -1,4 +1,8 @@
 package main
+import (
+	"net/http"
+	"encoding/json"
+)
 
 type HarbourResponse struct {
 	Code int `json:"code"`
@@ -12,7 +16,7 @@ func MyNotFoundHandler(w http.ResponseWriter, r *http.Request) {
 	data["requestId"] = "requestId"
 	data["result"] = &HarbourResponse{
 		Code: 0,
-		Message: "some message."
+		Message: "some message.",
 	}
 
 	w.WriteHeader(http.StatusNotFound)
@@ -32,7 +36,7 @@ func ReturnResult(w http.ResponseWriter, r *http.Request, code int) {
 	data["requestId"] = "requestId"
 	data["result"] = &HarbourResponse{
 		Code: code,
-		Message: "some message."
+		Message: "some message.",
 	}
 
 	w.WriteHeader(http.StatusOK)

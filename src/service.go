@@ -6,6 +6,7 @@ package main
 
 import (
 	"errors"
+	"strings"
 	"github.com/gorilla/mux"
 	"config"
 	"common/mylog"
@@ -87,7 +88,7 @@ func AutoCheck(){
 
 }
 
-func captainHandler(w Http.ResponseWriter, r *http.Request) {
+func captainHandler(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 		case "GET": {
 			// TODO 
@@ -98,7 +99,7 @@ func captainHandler(w Http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func captainOperateHandler(w Http.ResponseWriter, r *http.Request) {
+func captainOperateHandler(w http.ResponseWriter, r *http.Request) {
 	op := mux.Vars(r)["op"]
 	if strings.EqualFold(op,"cat") {
 		// TODO 
