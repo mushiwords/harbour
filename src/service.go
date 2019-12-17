@@ -5,17 +5,16 @@
 package main
 
 import (
-	"errors"
-	"strings"
-	"github.com/gorilla/mux"
-	"config"
+	"common/git"
 	"common/mylog"
+	"config"
+	"errors"
+	"github.com/gorilla/mux"
 	"net/http"
 	"strconv"
+	"strings"
 	"time"
-	"common/git"
 )
-
 
 /**
  * 包装ServeHTTP并打印访问日志
@@ -44,11 +43,12 @@ func StartWebService(cfg *config.Service) error {
 	r.NotFoundHandler = http.HandlerFunc(MyNotFoundHandler)
 
 	/** 第一级目录 **/
-	v1r := r.PathPrefix("/Harbour").Subrouter()
+	//v1r := r.PathPrefix("/Harbour").Subrouter()
 
 	/** 业务操作 **/
-	v1r.HandleFunc("/captain", captainHandler)
-	v1r.HandleFunc("/captain:{op:.*}", captainOperateHandler)
+	r.HandleFunc("/captain", captainHandler)
+	r.HandleFunc("/captain:{op:.*}", captainOperateHandler)
+	r.HandleFunc("/upload", uploadHandler)
 
 	httpServer := http.Server{
 		Handler:      myServeHTTP(r),
@@ -75,7 +75,7 @@ func my_timer() {
 	ticker := time.NewTicker(time.Minute * 1) // 1分钟的ticker
 
 	for range ticker.C {
-		AutoCheck()        // 自动检查
+		AutoCheck() // 自动检查
 		mylog.LogInfo("Ticker HeartBeat")
 	}
 }
@@ -85,17 +85,19 @@ func AccessLog(r *http.Request) {
 	mylog.LogAccess("access log.")
 }
 
-func AutoCheck(){
+func AutoCheck() {
 	mylog.LogInfo("auto check log.")
 
 }
 
 func captainHandler(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
-		case "GET": {
-			// TODO 
+	case "GET":
+		{
+			// TODO
 		}
-		case "POST": {
+	case "POST":
+		{
 
 		}
 	}
@@ -103,9 +105,14 @@ func captainHandler(w http.ResponseWriter, r *http.Request) {
 
 func captainOperateHandler(w http.ResponseWriter, r *http.Request) {
 	op := mux.Vars(r)["op"]
-	if strings.EqualFold(op,"cat") {
-		// TODO 
-	}else if strings.EqualFold(op,"dog") {
- 		// TODO 
+	if strings.EqualFold(op, "cat") {
+		// TODO
+	} else if strings.EqualFold(op, "dog") {
+		// TODO
 	}
+}
+
+func uploadHandler(w http.ResponseWriter, r *http.Request) {
+	w.WriteHeader(200)
+	w.Write([]byte("hello."))
 }
