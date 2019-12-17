@@ -48,7 +48,7 @@ func StartWebService(cfg *config.Service) error {
 	/** 业务操作 **/
 	r.HandleFunc("/captain", captainHandler)
 	r.HandleFunc("/captain:{op:.*}", captainOperateHandler)
-	r.HandleFunc("/weixin/upload", uploadHandler)
+	r.HandleFunc("/upload", uploadHandler)
 
 	httpServer := http.Server{
 		Handler:      myServeHTTP(r),
