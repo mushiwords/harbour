@@ -5,7 +5,7 @@
 package main
 
 import (
-	"common/git"
+	//"common/git"
 	"common/mylog"
 	"config"
 	"errors"
