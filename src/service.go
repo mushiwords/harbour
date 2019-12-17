@@ -71,12 +71,11 @@ func Start(cfg *config.Service) error {
 }
 
 func my_timer() {
-	git.GitClone("https://github.com/yycaptain/adapter-go.git")
+	//git.GitClone("https://github.com/yycaptain/adapter-go.git")
 	ticker := time.NewTicker(time.Minute * 1) // 1分钟的ticker
 
 	for range ticker.C {
 		AutoCheck() // 自动检查
-		mylog.LogInfo("Ticker HeartBeat")
 	}
 }
 
