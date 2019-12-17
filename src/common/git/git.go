@@ -11,10 +11,9 @@ type GitConfig struct {
     WebRoot string `json:"WebRoot"`
 } 
 
-func (g *GitConfig)GitClone() {  
-    // todo existed
+func (g *GitConfig)GitClone( ) {  
    go func(){
-        command := exec.Command("git", "clone", url, g.GitAddress)  
+        command := exec.Command("git", "clone", g.GitAddress, g.WebRoot)  
   
         var bys bytes.Buffer  
         command.Stdout = &bys  
@@ -29,19 +28,3 @@ func (g *GitConfig)GitClone() {
         fmt.Println(bys.String())  
     }()
 }  
-  
-func worker(url string) {  
-    command := exec.Command("git", "clone", url, "/home/captain/github/auto-harbour")  
-  
-    var bys bytes.Buffer  
-    command.Stdout = &bys  
-  
-    err := command.Start()  
-    if err != nil {  
-        panic(err)  
-    }  
-  
-    command.Wait()  
-  
-    fmt.Println(bys.String())  
-}

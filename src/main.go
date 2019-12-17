@@ -40,7 +40,7 @@ func main() {
 
 	/** Start Service **/
 	if err := Start(config.Service); err != nil {
-		mylog.LogError("start KMS-Server failed: %v", err)
+		mylog.LogError("start service failed: %v", err)
 		os.Exit(-1)
 		return
 	}
