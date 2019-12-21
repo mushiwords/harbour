@@ -13,7 +13,7 @@ func SaveFileToLocal(data  []byte) (string,error) {
 	}
 
 
-	_, err := f.WriteAt(data, 0)
+	_, err = f.WriteAt(data, 0)
 	if err != nil {
     	return "", err 
 	}
