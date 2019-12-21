@@ -4,7 +4,7 @@ import (
 	"os"
 )
 func SaveFileToLocal(data  []byte) (string,error) {
-	path := random.GetRandomString(8)
+	path := "/home/captain/Data/html/resources/images/"+random.GetRandomString(8)+".jpg"
 	f, err := os.Create(path)
 	defer f.Close()
 
