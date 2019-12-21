@@ -112,6 +112,22 @@ func captainOperateHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func uploadHandler(w http.ResponseWriter, r *http.Request) {
+	body,err  := readRequestBody(r)
+	if err != nil {
+		w.WriteHeader(403)
+	}
+	filePath, err := SaveFileToLocal(body)
 	w.WriteHeader(200)
-	w.Write([]byte("hello."))
+	w.Write([]byte(filePath))
+}
+
+
+
+func readRequestBody(r *http.Request) ([]byte, error) {
+	defer r.Body.Close()
+	data, err := ioutil.ReadAll(r.Body)
+	if err != nil || len(data) == 0 {
+		return data, fmt.Errorf("Need Request Body.")
+	}
+	return data, nil
 }
