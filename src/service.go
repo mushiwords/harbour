@@ -82,8 +82,7 @@ func my_timer() {
 }
 
 func AccessLog(r *http.Request) {
-	// TODO
-	mylog.LogAccess("access log.")
+	mylog.LogAccess("url: %v agent: %v contentLength: %v body: %v", r.RequestURI, r.UserAgent(), r.ContentLength, string(r.Body))
 }
 
 func AutoCheck() {
@@ -129,7 +128,6 @@ func readRequestBody(r *http.Request) ([]byte, error) {
 	defer r.Body.Close()
 	data, err := ioutil.ReadAll(r.Body)
 	if err != nil || len(data) == 0 {
-		mylog.LogError("Need Request Body.")
 		return data, fmt.Errorf("Need Request Body.")
 	}
 	return data, nil
