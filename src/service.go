@@ -82,7 +82,7 @@ func my_timer() {
 }
 
 func AccessLog(r *http.Request) {
-	mylog.LogAccess("url: %v agent: %v contentLength: %v body: %v", r.RequestURI, r.UserAgent(), r.ContentLength, string(r.Body))
+	mylog.LogAccess("url: %v agent: %v contentLength: %v", r.RequestURI, r.UserAgent(), r.ContentLength)
 }
 
 func AutoCheck() {
