@@ -9,13 +9,13 @@ import (
 	"common/mylog"
 	"config"
 	"errors"
+	"fmt"
 	"github.com/gorilla/mux"
+	"io/ioutil"
 	"net/http"
 	"strconv"
 	"strings"
 	"time"
-	"io/ioutil"
-	"fmt"
 )
 
 /**
@@ -114,21 +114,22 @@ func captainOperateHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func uploadHandler(w http.ResponseWriter, r *http.Request) {
-	body,err  := readRequestBody(r)
+	body, err := readRequestBody(r)
 	if err != nil {
+		mylog.LogError("read body error: %v", err.Error())
 		w.WriteHeader(403)
+		return
 	}
 	filePath, err := SaveFileToLocal(body)
 	w.WriteHeader(200)
 	w.Write([]byte(filePath))
 }
 
-
-
 func readRequestBody(r *http.Request) ([]byte, error) {
 	defer r.Body.Close()
 	data, err := ioutil.ReadAll(r.Body)
 	if err != nil || len(data) == 0 {
+		mylog.LogError("Need Request Body.")
 		return data, fmt.Errorf("Need Request Body.")
 	}
 	return data, nil
