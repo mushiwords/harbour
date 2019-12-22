@@ -8,14 +8,14 @@ type MyDB struct {
 }
 
 type MyLog struct {
-	LogLevel  string `json:"LogLevel"`
-	AccLogFile   string `json:"AccLogFile"`
-	InfoLogFile   string `json:"InoLogFile"`
-	LogMaxAge int    `json:"LogMaxAge"`
+	LogLevel    string `json:"LogLevel"`
+	AccLogFile  string `json:"AccLogFile"`
+	InfoLogFile string `json:"InfoLogFile"`
+	LogMaxAge   int    `json:"LogMaxAge"`
 }
 
 type Service struct {
-	ListenPort    int    `json:"ListenPort"`    // Server 端口
+	ListenPort int `json:"ListenPort"` // Server 端口
 }
 
 type OpenApi struct {
@@ -40,16 +40,16 @@ type Redis struct {
 	Timeout  int    `json:"Timeout"`
 }
 type WebService struct {
-	WorkRoot string `json:"WorkRoot"`
+	WorkRoot   string `json:"WorkRoot"`
 	GitAddress string `json:"GitAddress"`
 }
 
 type Config struct {
-	Service   *Service   `json:"Service"`
-	WebService   *WebService   `json:"WebService"`
-	MyDB      *MyDB      `json:"MyDB"`
-	MyLog     *MyLog     `json:"MyLog"`
-	OpenApi   *OpenApi   `json:"OpenApi"`
-	OSS       *OSS       `json:"OSS"`
-	Redis     *Redis     `json:"Redis"`
+	Service    *Service    `json:"Service"`
+	WebService *WebService `json:"WebService"`
+	MyDB       *MyDB       `json:"MyDB"`
+	MyLog      *MyLog      `json:"MyLog"`
+	OpenApi    *OpenApi    `json:"OpenApi"`
+	OSS        *OSS        `json:"OSS"`
+	Redis      *Redis      `json:"Redis"`
 }

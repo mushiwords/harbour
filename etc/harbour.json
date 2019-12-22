@@ -5,7 +5,7 @@
 	"Mylog":{
 		"LogLevel": "debug",
         "InfoLogFile": "log/harbour-info.log",
-        "AccessLogFile": "log/harbour-access.log",
+        "AccLogFile": "log/harbour-access.log",
         "LogMaxAge": 3600
 	},
 	"Redis": {
