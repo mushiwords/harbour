@@ -1,4 +1,5 @@
-export GOPATH=$(shell pwd):$(shell pwd)/vendors
+export GO111MODULE=on
+export GOPROXY=https://goproxy.io
 
 OBJ = harbour
 

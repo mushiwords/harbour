@@ -3,7 +3,6 @@ set -o errexit
 set -o nounset
 
 readonly OUTPUT_DIR="output"
-export GOPATH=$(pwd):$(pwd)/vendors
 
 rm -fr ${OUTPUT_DIR}
 mkdir -p ${OUTPUT_DIR}/{bin,etc,run,log}
