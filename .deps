@@ -1,7 +1,0 @@
-src/config/config.go \
-src/config/const.go \
-src/httpHandler.go \
-src/common/mylog/logger.go \
-src/common/mylog/mylog.go \
-src/service.go \
-src/main.go \
