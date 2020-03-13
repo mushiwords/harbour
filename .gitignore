@@ -1,4 +1,4 @@
 harbour
 output/*
 .deps
-./harbour.exe
+harbour.exe
