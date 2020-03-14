@@ -3,6 +3,7 @@ package models
 import (
 	"database/sql"
 	"fmt"
+	config "github.com/astaxie/beego/config"
 	_ "github.com/go-sql-driver/mysql"
 	"time"
 )
@@ -62,7 +63,14 @@ func (dbH *DbHandler) Begin() (*sql.Tx, error) {
 }
 
 func init(){
-	dbPool, err := sql.Open("mysql", "root:Captain_10654@tcp(www.yycaptain.com:3306)/db_harbour?charset=utf8")
+	conf, err := config.NewConfig("ini", "src/config/app.conf")
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+
+	connstr := conf.String("mysql::user")+":" + conf.String("mysql::password") +"@tcp("+conf.String("mysql::dbaddr") +"))/"+conf.String("mysql::dbname")+"?charset=utf8"
+	dbPool, err := sql.Open("mysql", connstr)
 	if err != nil {
 		fmt.Print("db open error :",err.Error())
 		return
