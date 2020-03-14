@@ -1,42 +1,40 @@
 package controllers
 
 import (
-"github.com/astaxie/beego"
+	"encoding/json"
+	"fmt"
+	"github.com/astaxie/beego"
+	"harbour/src/models"
+	_ "harbour/src/models"
 )
 
 type MainController struct {
 	beego.Controller
 }
-type UserController struct {
+
+type CaptainHandler struct {
 	beego.Controller
 }
 /**
  * MainController
  */
 func (this *MainController) Get() {
-	this.Get()
-}
-func (this *MainController) Post() {
-	this.Post()
-}
-func (this *MainController) Patch() {
-	this.Patch()
-}
-func (this *MainController) Delete() {
-	this.Delete()
+	this.Ctx.WriteString("hello")
 }
 /**
- * UserController
+ * CaptainHandler
  */
-func (this *UserController) Get() {
-	this.Get()
-}
-func (this *UserController) Post() {
-	this.Post()
-}
-func (this *UserController) Patch() {
-	this.Patch()
-}
-func (this *UserController) Delete() {
-	this.Delete()
+func (this *CaptainHandler) Get() {
+	pin := this.GetString("pin")
+	fmt.Print("pin:",pin)
+	info, err := models.SelectUserInfo(pin)
+	if err != nil {
+		this.Ctx.WriteString(err.Error())
+	}
+
+	body, err := json.Marshal(info)
+	if err != nil {
+		this.Ctx.WriteString(err.Error())
+	}
+	this.Ctx.WriteString(string(body))
 }

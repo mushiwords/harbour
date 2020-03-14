@@ -8,5 +8,6 @@ replace golang.org/x/tools v0.0.0-20200117065230-39095c1d176c => github.com/gola
 
 require (
 	github.com/astaxie/beego v1.12.1
+	github.com/go-sql-driver/mysql v1.4.1
 	github.com/shiena/ansicolor v0.0.0-20151119151921-a422bbe96644 // indirect
 )
