@@ -8,7 +8,7 @@ all: $(OBJ)
 $(OBJ):
 	cd src && go build -gcflags "-N -l" -o ../$@ .
 
--include: .deps
+-include .deps
 
 dep:
 	echo -n "$(OBJ):" > .deps
