@@ -69,7 +69,7 @@ func init(){
 		return
 	}
 
-	connstr := conf.String("mysql::user")+":" + conf.String("mysql::password") +"@tcp("+conf.String("mysql::dbaddr") +"))/"+conf.String("mysql::dbname")+"?charset=utf8"
+	connstr := conf.String("mysql::user")+":" + conf.String("mysql::password") +"@tcp("+conf.String("mysql::address") +")/"+conf.String("mysql::dbname")+"?charset=utf8"
 	dbPool, err := sql.Open("mysql", connstr)
 	if err != nil {
 		fmt.Print("db open error :",err.Error())
