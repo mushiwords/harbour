@@ -2,6 +2,7 @@ package worker
 
 import (
 	"bufio"
+	"fmt"
 	"io"
 	"os"
 	"strings"
@@ -11,7 +12,7 @@ type XYZData struct {
 	X string
 	Y string
 	Z string
-	Amplitude  string
+	A string
 }
 func ReadTxtFile(path string) (*[]XYZData, error) {
 	var results []XYZData
@@ -19,10 +20,13 @@ func ReadTxtFile(path string) (*[]XYZData, error) {
 	if err != nil {
 		return nil, err
 	}
-	for _,line := range lines{
+	for idx,line := range lines{
 		items := strings.Split(line,"\t")
 		if len(items) == 4 && !strings.HasPrefix(items[0],"#"){
-			results = append(results,XYZData{X:items[0],Y:items[1],Z:items[2],Amplitude:items[3]})
+			results = append(results,XYZData{X:items[0],Y:items[1],Z:items[2],A:items[3]})
+		}
+		if idx == 10 {
+			fmt.Printf("read success: %s , %s, %s",items[0],items[1],items[2])
 		}
 	}
 
