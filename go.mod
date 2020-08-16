@@ -1,4 +1,4 @@
-module harbour
+module monitor
 
 go 1.13
 

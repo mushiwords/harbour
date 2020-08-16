@@ -2,10 +2,9 @@ package controllers
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/astaxie/beego"
-	"harbour/src/models"
-	_ "harbour/src/models"
+	"html/template"
+	"monitor/src/worker"
 )
 
 type MainController struct {
@@ -19,20 +18,34 @@ type CaptainHandler struct {
  * MainController
  */
 func (this *MainController) Get() {
-	this.Ctx.WriteString("hello")
+	t, err := template.ParseFiles("./src/views/index.html")
+	if err != nil {
+		this.Ctx.WriteString("err")
+		return
+	}
+	t.Execute(this.Controller.Ctx.ResponseWriter,this.Controller.Ctx.Request)
+	//this.Ctx.WriteString("hello")
 }
 /**
  * CaptainHandler
  */
 func (this *CaptainHandler) Get() {
-	pin := this.GetString("pin")
-	fmt.Print("pin:",pin)
-	info, err := models.SelectUserInfo(pin)
+	//pin := this.GetString("pin")
+	//fmt.Print("pin:",pin)
+	//info, err := models.SelectUserInfo(pin)
+	//if err != nil {
+	//	this.Ctx.WriteString(err.Error())
+	//}
+//
+	//body, err := json.Marshal(info)
+	//if err != nil {
+	//	this.Ctx.WriteString(err.Error())
+	//}
+	data,err := worker.ReadTxtFile("./src/static/load/xyz.txt")
 	if err != nil {
 		this.Ctx.WriteString(err.Error())
 	}
-
-	body, err := json.Marshal(info)
+	body, err := json.Marshal(data)
 	if err != nil {
 		this.Ctx.WriteString(err.Error())
 	}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>surface</title>
+    <script src="js/echarts.js"></script>
+    <script src="js/echarts-gl.min.js"></script>
+</head>
+<body>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="main" style="width: 600px;height:400px;"></div>
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+    $.ajax({
+        type: "POST",
+        url: "url",
+        data:datatosend,
+        dataType:"json",
+        beforeSend: function(xhr) {
+            xhr.withCredentials = true;
+        }
+        crossDomain:true,
+        success: function (data) {
+            var a=JSON.stringify(data);
+            if(data.result==true){
+            ...........
+            }else{
+            ...........
+            }
+        },
+        error:function (data) {
+            var a=JSON.stringify(data);
+            alert(a);
+        }
+    });
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('get','http://localhost:9090/captain',true);
+    xhr.setRequestHeader("Access-Control-Allow-Origin","http://localhost:63342");//设置请求头
+    xhr.setRequestHeader("Content-type","application/json");//设置请求头
+
+    xhr.send();
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            //var json =
+            console.log(json);
+            var jsonStr = xhr.responseText;//获取到json字符串，还需解析
+            var jsonObj = eval(jsonStr);
+
+            //alert(length(jsonStr));
+
+            // 指定图表的配置项和数据
+            var data = [];
+            // 曲面图要求给入的数据是网格形式按顺序分布。
+            for (var y = 0; y <= 200; y++) {
+
+                data.push([jsonObj[y].X, jsonObj[y].Y, jsonObj[y].Z]);
+
+            }
+            option = {
+                grid3D: {},
+                xAxis3D: {},
+                yAxis3D: {},
+                zAxis3D: {},
+                series: [{
+                    type: 'surface',
+                    data: data
+                }]
+            };
+
+
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+        }
+    };
+
+</script>
+</body>
+</html>

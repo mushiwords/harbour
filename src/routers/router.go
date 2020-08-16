@@ -1,7 +1,7 @@
 package routers
 import (
-	"harbour/src/controllers"
 	"github.com/astaxie/beego"
+	"monitor/src/controllers"
 )
 
 func init() {

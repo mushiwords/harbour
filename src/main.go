@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/astaxie/beego"
 	config "github.com/astaxie/beego/config"
-	_ "harbour/src/routers"
+	_ "monitor/src/routers"
 )
 
 func main(){
