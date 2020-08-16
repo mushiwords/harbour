@@ -18,7 +18,7 @@ type CaptainHandler struct {
  * MainController
  */
 func (this *MainController) Get() {
-	t, err := template.ParseFiles("./src/views/index.html")
+	t, err := template.ParseFiles("./src/views/a.html")
 	if err != nil {
 		this.Ctx.WriteString("err")
 		return
