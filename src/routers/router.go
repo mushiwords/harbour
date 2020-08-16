@@ -5,6 +5,6 @@ import (
 )
 
 func init() {
-	beego.Router("/", &controllers.MainController{})
-	beego.Router("/captain", &controllers.CaptainHandler{})
+	beego.Router("/monitor", &controllers.MainController{})
+	beego.Router("/monitor/captain", &controllers.CaptainHandler{})
 }

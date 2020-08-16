@@ -13,7 +13,7 @@
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('main'));
     var xhr = new XMLHttpRequest();
-    xhr.open('get','http://localhost:9090/captain',true);
+    xhr.open('get','http://localhost:9090/monitor/captain',true);
     xhr.setRequestHeader("Access-Control-Allow-Origin","*");//设置请求头
     xhr.setRequestHeader("Content-type","application/json");//设置请求头
     xhr.send();
