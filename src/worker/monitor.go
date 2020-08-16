@@ -22,8 +22,8 @@ func ReadTxtFile(path string) (*[]XYZData, error) {
 	}
 	for idx,line := range lines{
 		items := strings.Split(line,"\t")
-		if len(items) == 4 && !strings.HasPrefix(items[0],"#"){
-			results = append(results,XYZData{X:items[0],Y:items[1],Z:items[2],A:items[3]})
+		if len(items) >= 3 && !strings.HasPrefix(items[0],"#"){
+			results = append(results,XYZData{X:items[0],Y:items[1],Z:items[2]})
 		}
 		if idx == 10 {
 			fmt.Printf("read success: %s , %s, %s",items[0],items[1],items[2])
