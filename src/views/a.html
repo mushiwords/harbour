@@ -30,7 +30,7 @@
             // 曲面图要求给入的数据是网格形式按顺序分布。
             for (var y = 0; y <= 2000; y++) {
 
-                data.push([jsonObj[y].X, jsonObj[y].Y, jsonObj[y].Z]);
+                data.push([parseInt(jsonObj[y].X), parseInt(jsonObj[y].Y), parseInt(jsonObj[y].Z)]);
 
             }
             console.log(data.length);
@@ -76,6 +76,12 @@
                 },
                 series: [{
                     type: 'surface',
+                    wireFrame: {
+                        show: false
+                    },
+                    itemStyle: {
+                        color: 'rgb(73, 50, 199)'
+                    },
                     data: data
                 }]
             };
