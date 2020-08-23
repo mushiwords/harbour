@@ -28,12 +28,14 @@
             // 指定图表的配置项和数据
             var data = [];
             // 曲面图要求给入的数据是网格形式按顺序分布。
-            for (var y = 0; y <= 2000; y++) {
-
-                data.push([parseInt(jsonObj[y].X), parseInt(jsonObj[y].Y), parseInt(jsonObj[y].Z)]);
-                if (y % 100 == 0 ){
-                    console.log(parseInt(jsonObj[y].X), parseInt(jsonObj[y].Y), parseInt(jsonObj[y].Z))
+            for (var y = 0; ; y++) {
+                if (jsonObj[y] != null){
+                    data.push([parseInt(jsonObj[y].X), parseInt(jsonObj[y].Y), parseInt(jsonObj[y].Z)]);
+                    if (y % 100 == 0 ){
+                        console.log(parseInt(jsonObj[y].X), parseInt(jsonObj[y].Y), parseInt(jsonObj[y].Z))
+                    }
                 }
+
             }
             console.log(data.length);
             option = {
@@ -62,19 +64,10 @@
                     }
                 },
                 xAxis3D: {
-                    type: 'value',
-                    min: 0,
-                    minInterval: 1
                 },
                 yAxis3D: {
-                    type: 'value',
-                    min: 0,
-                    minInterval: 1
                 },
                 zAxis3D: {
-                    type: 'value',
-                    min: 0,
-                    minInterval: 1
                 },
                 series: [{
                     type: 'surface',
