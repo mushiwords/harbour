@@ -13,7 +13,7 @@
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('main'));
     var xhr = new XMLHttpRequest();
-    xhr.open('get','http://www.yycaptain.com/monitor/captain',true);
+    xhr.open('get','http://localhost:9090/monitor/captain',true);
     xhr.setRequestHeader("Access-Control-Allow-Origin","*");//设置请求头
     xhr.setRequestHeader("Content-type","application/json");//设置请求头
     xhr.send();
@@ -29,23 +29,56 @@
             // 指定图表的配置项和数据
             var data = [];
             // 曲面图要求给入的数据是网格形式按顺序分布。
-            for (var y = 0; y <= 200; y++) {
+            for (var y = 0; y <= 2000; y++) {
 
                 data.push([jsonObj[y].X, jsonObj[y].Y, jsonObj[y].Z]);
 
             }
             option = {
-                grid3D: {},
-                xAxis3D: {},
-                yAxis3D: {},
-                zAxis3D: {},
+                grid3D: {
+                    axisPointer: {
+                        show: true,
+                    },
+                    viewControl: {
+                        distance: 100,
+                        beta : -10,
+                        alpha :50
+                    },
+                    postEffect: {
+                        enable: true
+                    },
+                    light: {
+                        main: {
+                            shadow: false,
+                            intensity: 2
+                        },
+                        ambientCubeMap: {
+                            exposure: 2,
+                            diffuseIntensity: 0.2,
+                            specularIntensity: 1
+                        }
+                    }
+                },
+                xAxis3D: {
+                    type: 'value',
+                    min: 0,
+                    minInterval: 1
+                },
+                yAxis3D: {
+                    type: 'value',
+                    min: 0,
+                    minInterval: 1
+                },
+                zAxis3D: {
+                    type: 'value',
+                    min: 0,
+                    minInterval: 1
+                },
                 series: [{
                     type: 'surface',
                     data: data
                 }]
             };
-
-
             // 使用刚指定的配置项和数据显示图表。
             myChart.setOption(option);
         }
