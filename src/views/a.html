@@ -31,7 +31,9 @@
             for (var y = 0; y <= 2000; y++) {
 
                 data.push([parseInt(jsonObj[y].X), parseInt(jsonObj[y].Y), parseInt(jsonObj[y].Z)]);
-
+                if (y % 100 == 0 ){
+                    console.log(parseInt(jsonObj[y].X), parseInt(jsonObj[y].Y), parseInt(jsonObj[y].Z))
+                }
             }
             console.log(data.length);
             option = {
