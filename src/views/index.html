@@ -11,6 +11,10 @@
 <div id="main" style="width: 600px;height:400px;"></div>
 <script type="text/javascript">
     // 基于准备好的dom，初始化echarts实例
+    var jsonS = '[{"X":"123","Y":"123","Z":"123"},{"X":"666","Y":"666","Z":"666"},{"X":"555","Y":"555","Z":"555"}]';
+    var jsonO = JSON.parse(jsonS);
+    console.log(jsonO._length);
+
     var myChart = echarts.init(document.getElementById('main'));
 
     function makeGaussian(amplitude, x0, y0, sigmaX, sigmaY) {

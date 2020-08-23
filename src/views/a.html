@@ -23,17 +23,17 @@
             //console.log(json);
             var jsonStr = xhr.responseText;//获取到json字符串，还需解析
            // var jsonObj = eval(jsonStr);
-            var jsonObj = JSON.parse(jsonStr)
+            var jsonObj = JSON.parse(jsonStr);
 
 
             // 指定图表的配置项和数据
-            console.log(jsonObj.len)
+            console.log(jsonObj._length;
             var data = [];
             // 曲面图要求给入的数据是网格形式按顺序分布。
-            for (var y = 0; y < jsonObj.len(); y++) {
-                    data.push([parseInt(jsonObj[y].X), parseInt(jsonObj[y].Y), parseInt(jsonObj[y].Z)]);
+            for (var y = 0; y < jsonObj._length; y++) {
+                    data.push([parseInt(jsonObj[y][X]), parseInt(jsonObj[y][Y]), parseInt(jsonObj[y][Z])]);
                     if (y % 100 == 0 ){
-                        console.log(parseInt(jsonObj[y].X), parseInt(jsonObj[y].Y), parseInt(jsonObj[y].Z))
+                        console.log(parseInt(jsonObj[y][X]), parseInt(jsonObj[y][Y]), parseInt(jsonObj[y][Z]))
                     }
 
             }
