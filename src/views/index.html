@@ -13,7 +13,7 @@
     // 基于准备好的dom，初始化echarts实例
     var jsonS = '[{"X":"123","Y":"123","Z":"123"},{"X":"666","Y":"666","Z":"666"},{"X":"555","Y":"555","Z":"555"}]';
     var jsonO = JSON.parse(jsonS);
-    console.log(jsonO._length);
+    console.log(jsonO.length);
 
     var myChart = echarts.init(document.getElementById('main'));
 
@@ -36,7 +36,7 @@
         for (var x = -50; x <= 50; x++) {
             var z = gaussian(x, y);
             data.push([x, y, z]);
-            console.log(x,y,z)
+            //console.log(x,y,z)
         }
     }
     option = {
