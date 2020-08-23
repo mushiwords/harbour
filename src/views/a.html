@@ -26,11 +26,10 @@
             // 指定图表的配置项和数据
             var data = [];
             // 曲面图要求给入的数据是网格形式按顺序分布。
-            for (var y = 0; y < jsonObj.length; y++) {
-                    data.push([parseInt(jsonObj[y].X), parseInt(jsonObj[y].Y), parseInt(jsonObj[y].Z)]);
+            for (var y = 0; y < 8000; y++) {// jsonObj.length
+                data.push([parseInt(jsonObj[y].X), parseInt(jsonObj[y].Y), parseInt(jsonObj[y].Z)]);
             }
-            console.log("load %n ",jsonObj.length,"data.");
-            console.log(data.length);
+            console.log("load ",jsonObj.length," data.");
             option = {
                 grid3D: {
                     axisPointer: {
