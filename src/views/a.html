@@ -13,7 +13,7 @@
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('main'));
     var xhr = new XMLHttpRequest();
-    xhr.open('get','http://localhost:9090/monitor/captain',true);
+    xhr.open('get','http://www.yycaptain.com/monitor/captain',true);
     xhr.setRequestHeader("Access-Control-Allow-Origin","*");//设置请求头
     xhr.setRequestHeader("Content-type","application/json");//设置请求头
     xhr.send();
@@ -24,7 +24,6 @@
             var jsonStr = xhr.responseText;//获取到json字符串，还需解析
             var jsonObj = eval(jsonStr);
 
-            //alert(length(jsonStr));
 
             // 指定图表的配置项和数据
             var data = [];
@@ -34,6 +33,7 @@
                 data.push([jsonObj[y].X, jsonObj[y].Y, jsonObj[y].Z]);
 
             }
+            console.log(data.length);
             option = {
                 grid3D: {
                     axisPointer: {
